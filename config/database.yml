@@ -31,3 +31,11 @@ test:
   pool: 5
   username: klubihaku
   password: cluuv1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: 
+  pool: 5
+  username: 
+  password:
