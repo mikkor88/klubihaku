@@ -11,13 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111116195600) do
+ActiveRecord::Schema.define(:version => 20111120222314) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
+    t.float    "lat"
+    t.float    "lng"
+    t.boolean  "gmaps"
+    t.float    "distance"
   end
 
 end

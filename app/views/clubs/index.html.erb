@@ -4,15 +4,18 @@
   <tr>
     <th>Name</th>
     <th>Type</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Address</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
   </tr>
 
 <% @clubs.each do |club| %>
   <tr>
     <td><%= club.name %></td>
     <td><%= club.type %></td>
+		<td><%= club.address %></td>
+		<td><%= club.lat %></td>
+		<td><%= club.lng %></td>
     <td><%= link_to 'Show', club %></td>
     <td><%= link_to 'Edit', edit_club_path(club) %></td>
     <td><%= link_to 'Destroy', club, confirm: 'Are you sure?', method: :delete %></td>

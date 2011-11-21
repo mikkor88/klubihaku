@@ -1,5 +1,15 @@
 Klubihaku::Application.routes.draw do
   resources :clubs
+	resources :userlocations do
+		collection do
+			get 'location'
+			post 'do_location'
+		end
+	end
+	
+	match '/map', :to => 'clubs#map'
+	
+	root :to => 'userlocations#location'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

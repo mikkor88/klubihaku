@@ -10,6 +10,20 @@
   <%= @club.type %>
 </p>
 
+<p>
+  <b>Address:</b>
+  <%= @club.address %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @club.lat %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @club.lng %>
+</p>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>
