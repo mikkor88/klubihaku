@@ -16,7 +16,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'geokit-rails3'
+gem 'geocoder'
 gem 'gmaps4rails'
 
 # To use ActiveModel has_secure_password

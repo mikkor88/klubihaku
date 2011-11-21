@@ -80,8 +80,4 @@ class ClubsController < ApplicationController
       format.json { head :ok }
     end
   end
-	
-	def map
-		@clubs = Club.within(cookies[:distance], :origin=> cookies[:address]).to_gmaps4rails
-	end
 end

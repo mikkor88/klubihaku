@@ -1,5 +1,6 @@
 class Club < ActiveRecord::Base
-	acts_as_mappable :default_units => :kms, :address => "address"
+	geocoded_by :address, :latitude  => :lat, :longitude => :lng 
+	after_validation :geocode, :if => :address_changed?
 	
 	acts_as_gmappable :lat => 'lat', :lng => 'lng', :check_process => :prevent_geocoding,
                   :address => "address", :normalized_address => "address",
