@@ -1,7 +1,18 @@
 class UserlocationsController < ApplicationController
 	
 	def location
-		@clubs = Club.near(cookies[:address], cookies[:distance]).to_gmaps4rails
+		if !cookies[:address].nil? && !cookies[:distance].nil?
+			if Club.near(cookies[:address], cookies[:distance]).nil?
+				@clubs = Club.find(2).to_gmaps4rails # shows Kamppi as default location
+				@message = "No clubs found within specified distance."
+			else
+				@clubs = Club.near(cookies[:address], cookies[:distance]).to_gmaps4rails
+				@message = "Found clubs nearby your location!"
+			end
+		else
+			@clubs = Club.find(2).to_gmaps4rails
+			@message = "Enter your address and maximum distance you'd like to travel."
+		end
 	end
 	
 	def do_location
