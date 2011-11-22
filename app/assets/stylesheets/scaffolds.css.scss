@@ -23,9 +23,11 @@ a {
     color: #fff;
     background-color: #000; } }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px; } }
+address {
+	width: 80px; }
+
+distance {
+	width: 10px; }
 
 #notice {
   color: green; }

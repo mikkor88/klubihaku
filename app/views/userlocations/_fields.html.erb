@@ -5,14 +5,18 @@
 <% end %>
 
 <%= form_tag '/userlocations/do_location' do %>
-	<div class="field">
-		<%= label_tag 'address' %><br />
-		<%= text_field_tag 'address' %>
-	</div>
-	<div class="field">
-		<%= label_tag 'distance' %><br />
-		<%= text_field_tag 'distance' %>
-	</div>
+	<table>
+		<tr>
+			<td>
+				<%= label_tag 'address' %><br />
+				<%= text_field_tag 'address', nil, :class => 'address' %>
+			</td>
+			<td>
+				<%= label_tag 'distance' %><br />
+				<%= text_field_tag 'distance', nil, :class => 'distance' %>
+			</td>
+		</tr>
+	</table>
 	<div class="actions">
 		<%= submit_tag 'Find clubs' %>
 	</div>
