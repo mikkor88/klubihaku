@@ -2,7 +2,7 @@ class UserlocationsController < ApplicationController
 	
 	def location
 		if !cookies[:address].nil? && !cookies[:distance].nil?
-			if Club.near(cookies[:address], cookies[:distance]).nil?
+			if Club.near(cookies[:address], cookies[:distance]).empty?
 				@clubs = Club.find(2).to_gmaps4rails # shows Kamppi as default location
 				@message = "No clubs found within specified distance."
 			else
