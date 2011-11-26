@@ -6,7 +6,11 @@ class UserlocationsController < ApplicationController
 				@clubs = Club.find(2).to_gmaps4rails # shows Kamppi as default location
 				@message = "No clubs found within specified distance."
 			else
-				@clubs = Club.near(cookies[:address], cookies[:distance]).to_gmaps4rails
+				@clubs = Club.near(cookies[:address], cookies[:distance]).to_gmaps4rails do |club, marker|
+					marker.infowindow render_to_string(:partial => "clubs/my_template", :locals => { :club => club }).gsub(/\n/, '').gsub(/"/, '\"')
+					marker.title   "#{club.name}"
+					marker.json    "\"id\": #{club.id}"
+					end
 				@message = "Found clubs nearby your location!"
 			end
 		else
