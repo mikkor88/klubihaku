@@ -7,8 +7,6 @@ Klubihaku::Application.routes.draw do
 		end
 	end
 	
-	match '/map', :to => 'clubs#map'
-	
 	root :to => 'userlocations#location'
 
   # The priority is based upon order of creation:
