@@ -3,26 +3,28 @@ class UserlocationsController < ApplicationController
 	def location
 		if !cookies[:address].nil? && !cookies[:distance].nil?
 			if Club.near(cookies[:address], cookies[:distance]).empty?
-				@clubs = Club.find(2).to_gmaps4rails do |club, marker| # shows Kamppi as default location
-					marker.infowindow render_to_string(:partial => "clubs/my_template", :locals => { :club => club }).gsub(/\n/, '').gsub(/"/, '\"')
-					marker.json    "\"id\": #{club.id}"
-					end
-				#@own_location = cookies[:address].to_gmaps4rails käyttäjän oma sijainti jonka pitäisi näkyä kartalla
+				@clubs = []
+				user_coords = Geocoder.coordinates(cookies[:address])
+				@own_location = [{"lng" => user_coords[1], "lat" => user_coords[0], "radius" => 20}].to_json
 				@message = "No clubs found within specified distance."
 			else
 				@clubs = Club.near(cookies[:address], cookies[:distance]).to_gmaps4rails  do |club, marker|
-					marker.infowindow render_to_string(:partial => "clubs/my_template", :locals => { :club => club }).gsub(/\n/, '').gsub(/"/, '\"')
+					marker.infowindow render_to_string(:partial => "clubs/my_template",
+																					   :locals => { :club => club }).gsub(/\n/, '').gsub(/"/, '\"')
 				  marker.json    "\"id\": #{club.id}"
 					end
-				#@own_location = cookies[:address].to_gmaps4rails
+				user_coords = Geocoder.coordinates(cookies[:address])
+				@own_location = [{"lng" => user_coords[1], "lat" => user_coords[0], "radius" => 20}].to_json
 				@message = "Found clubs nearby your location!"
 			end
 		else
-			@clubs = Club.find(2).to_gmaps4rails do |club, marker| # shows Kamppi as default location
-					marker.infowindow render_to_string(:partial => "clubs/my_template", :locals => { :club => club }).gsub(/\n/, '').gsub(/"/, '\"')
-					marker.json    "\"id\": #{club.id}"
-					end
-			#@own_location = cookies[:address].to_gmaps4rails
+			unless cookies[:address].nil?
+				user_coords = Geocoder.coordinates(cookies[:address])
+				@own_location = [{"lng" => user_coords[1], "lat" => user_coords[0], "radius" => 20}].to_json
+			end
+			@clubs = []
+			@own_location = [{"lng" => 24.9495809, "lat" => 60.168986, "radius" => 20}].to_json
+			#näyttää Aleksanterinkadun default-osoitteena, pitäisi olla käyttäjän oma default_location
 			@message = "Enter your address and maximum distance you'd like to travel."
 		end
 	end

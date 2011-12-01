@@ -1,1 +1,5 @@
-<%= gmaps("markers" => { "data" => @clubs, "options" => { "randomize" => true, "max_random_distance" => 100 }}) %>
+<%= gmaps({
+		 "markers"     => { "data" => @clubs },
+     "circles"     => { "data" => @own_location }
+			})
+    %>
