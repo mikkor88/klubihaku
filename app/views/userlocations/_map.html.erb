@@ -1,1 +1,1 @@
-<%= gmaps4rails(@clubs) %>
+<%= gmaps("markers" => { "data" => @clubs, "options" => { "randomize" => true, "max_random_distance" => 100 }}) %>
