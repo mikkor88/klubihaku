@@ -8,9 +8,11 @@
 </head>
 <body>
 	<%= render 'layouts/header' %>
-	<% flash.each do |key, value| %>
-		<%= content_tag(:div, value, :class => "flash #{key}") %>
-	<% end %>
+	 <section class="round">
+	    <% flash.each do |key, value| %>
+		  <%= content_tag(:div, value, :class => "flash #{key}") %>
+		<% end %>
+	</section>
 	<%= yield %>
 	<%= yield :scripts %>
 	<%= render 'layouts/footer' %>

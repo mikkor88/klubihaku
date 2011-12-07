@@ -20,6 +20,10 @@ gem 'jquery-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+group :development do
+  gem 'rspec-rails', '2.6.1'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -34,5 +38,8 @@ gem 'gmaps4rails'
 
 group :test do
   # Pretty printed test output
+	gem 'rspec-rails', '2.6.1'
+	gem 'webrat', '0.7.1'
+	gem 'factory_girl_rails', '1.0'
   gem 'turn', :require => false
 end
