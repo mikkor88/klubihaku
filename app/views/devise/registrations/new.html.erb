@@ -12,6 +12,9 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+	<div><%= f.label :default_address %> <i>(enter an address that is displayed as your default location)</i><br />
+  <%= f.text_field :defaultaddress %></div>
+	
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

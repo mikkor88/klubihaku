@@ -4,6 +4,7 @@
 				<li><%= link_to "Home", root_path %></li> |
 				<li><%= link_to "Help", help_path %></li> |
 				<% if user_signed_in? %>
+					<%= link_to "Profile settings", edit_user_registration_path %> | 
 					<li>Signed in as <%= current_user.email %>. 
 					<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 					</li>

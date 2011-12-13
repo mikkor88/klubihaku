@@ -14,6 +14,9 @@
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
+	
+	<div><%= f.label :default_address %> <i>(enter an address that is displayed as your default location)</i><br />
+  <%= f.text_field :defaultaddress %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
