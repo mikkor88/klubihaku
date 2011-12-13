@@ -19,6 +19,7 @@ gem 'will_paginate'
 gem 'jquery-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'devise'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

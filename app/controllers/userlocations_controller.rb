@@ -1,11 +1,12 @@
 class UserlocationsController < ApplicationController
 	
 	def location
+		@title = "Home"
 		if cookies[:address].nil? && cookies[:distance].nil?
 			@clubs = []
 			@own_location = [{"lng" => 24.9495809, "lat" => 60.168986, "radius" => 20}].to_json
 			#näyttää Aleksanterinkadun default-osoitteena, pitäisi olla käyttäjän oma default_location
-			@message = "Enter your address and maximum distance you'd like to travel."
+			@message = "Enter your address and the maximum distance you'd like to travel."
 		elsif Club.near(cookies[:address], cookies[:distance]).empty?
 			@clubs = []
 			user_coords = Geocoder.coordinates(cookies[:address])

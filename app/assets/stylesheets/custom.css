@@ -3,3 +3,31 @@
 
 .distance {
 	width: 50px; }
+	
+.text {
+	width: 500px
+}
+	
+/* Navigation */
+
+nav {
+  float: none;
+	margin-bottom: 10px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+footer {
+  margin-top: 10px;
+	margin-left: auto;
+  margin-right: auto;
+}
